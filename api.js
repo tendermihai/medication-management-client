@@ -20,3 +20,9 @@ async function getMedication() {
   let data = await api("/api/v1/medications/all", "GET", null);
   return data.json();
 }
+
+async function getSortMedication(field) {
+  let medications = await api("/api/v1/medications/sort/" + field, "GET", null);
+
+  return medications.json();
+}

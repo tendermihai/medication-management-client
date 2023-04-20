@@ -1,7 +1,7 @@
 async function home() {
   let data = await getMedication();
   console.log(data);
-  attachWdigets(data);
+  attachWidgets(data);
 }
 
 function createWidget(product) {
@@ -52,9 +52,9 @@ function createWidget(product) {
   return section;
 }
 
-function attachWdigets(products) {
+function attachWidgets(products) {
   let container = document.querySelector(".container");
-
+  container.innerHTML = "";
   products.forEach((product) => {
     container.appendChild(createWidget(product));
   });
