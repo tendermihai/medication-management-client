@@ -20,3 +20,34 @@ async function getMedication() {
   let data = await api("/api/v1/medications/all", "GET", null);
   return data.json();
 }
+
+async function getSortedBy(field) {
+  let medications = await api("/api/v1/medications/sort/" + field, "GET", null);
+
+  return medications.json();
+}
+
+async function addMedication(medication) {
+  let medResponse = await api("/api/v1/medications/add", "POST", medication);
+  return medResponse.json();
+}
+
+async function delMedication(id) {
+  let medResponse = await api(`/api/v1/medications/delete/${id}`, "DELETE");
+  return medResponse.json();
+}
+
+async function updateMedication(medication) {
+  let data = {
+    medication,
+  };
+  console.log(data);
+  let medResponse = await api("/api/v1/medications/update", "PUT", data);
+
+  return medResponse.json();
+}
+
+async function getMedById(id) {
+  let data = await api(`/api/v1/medications/find/id/${id}`, "GET", null);
+  return data.json();
+}
